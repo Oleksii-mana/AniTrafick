@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Анітрафік</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-    <h1>Добрий день, любителі аніме!</h1>
+
+<header class="header">
+    <h1>AniTrafik</h1>
 </header>
 
-<nav>
+<nav class="nav">
     <a href="Main.html">Головна</a>
     <a href="Animes.html">Усі аніме</a>
     <a href="MyList.html">Мої улюблені</a>
@@ -20,33 +22,43 @@
 </nav>
 
 
-<h2>Нові аніме</h2>
-
-<ul>
-    <li>Аніме 3</li>
-    <li>Аніме 2</li>
-    <li>Аніме 1</li>
-</ul>
-
-<p>Реклама</p>
-
-<img src="WelcomeImg.png" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
+<div class="flex">
+    <aside>
+        <p>Місце для реклами</p>
+    </aside>
+    <main>
 
 
+        <h2 class="title">Нові аніме</h2>
+
+        <ul class="list">
+            <li class="list-item">Аніме 3</li>
+            <li class="list-item">Аніме 2</li>
+            <li class="list-item">Аніме 1</li>
+        </ul>
+
+        <p>Реклама</p>
+
+        <img src="WelcomeImg.png" class="image" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
+
+        <h2 class="title">Новини про оновлення</h2>
+
+        <ul class="list">
+            <li class="list-item">Оновлення 2</li>
+            <li class="list-item">В адміна днюха</li>
+            <li class="list-item">Оновлення 1</li>
+        </ul>
+    </main>
+</div>
 
 
-<h2>Новини про оновлення</h2>
-
-<ul>
-    <li>Оновлення 2</li>
-    <li>В адміна днюха</li>
-    <li>Оновлення 1</li>
-</ul>
 
 
 
 
-<footer>
+
+
+<footer class="footer">
     <p>© 2025 Анітрафік. Усі права НЕ захищено.</p>
 </footer>
 </body>
