@@ -1,0 +1,233 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F1EFEC;
+    text-align: center;
+}
+.h11 {
+    color: purple;
+}
+.h12 {
+    color: yellow;
+}
+.h13 {
+    color: blue;
+}
+.h21 {
+    color: red;
+}
+.h22 {
+    color: pink;
+}
+.h23 {
+    color: green;
+}
+.header {
+    background: #123458;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+.header2 {
+    background: #123498;
+    padding: 20px;
+    font-size: 24px;
+}
+.header3 {
+    background: #129458;
+    padding: 20px;
+    font-size: 24px;
+}
+.header4 {
+    background: #923458;
+    padding: 20px;
+    font-size: 24px;
+}
+.nav {
+    background: #030303;
+    padding: 10px;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+.nav a:hover {
+    text-decoration: underline;
+}
+.title {
+    color: #123458;
+}
+.list {
+    list-style: none;
+    padding: 0;
+}
+.list-item {
+    background: #D4C9BE;
+    margin: 10px auto;
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.image {
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+aside {
+    width: 10%;
+    background: #ddd;
+    padding: 10px;
+}
+
+main {
+    width: 100%;
+    padding: 0px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+.table th:hover, .table td:hover {
+    background-color: #D4C9BE;
+}
+
+.table img {
+    width: 200px;
+    height: 300px;
+    display: block;
+    margin: auto;
+}
+
+.pre{
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+.text {
+    text-align: justify;
+    font-family: Arial, sans-serif;
+    text-indent: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+
+textarea {
+    width: 400px;
+    height: 150px;
+    resize: none;
+}
+
+button {
+    background: #123458;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #110135;
+}
+
+.footer {
+    background: #333;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.zoom-effect {
+    transition: transform 0.25s ease;
+}
+
+.zoom-effect.zoomed {
+    transform: scale(1.1);
+}
+
+#addAnimeForm {
+    margin: 10px 0;
+}
+
+.anime-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 колонок */
+    gap: 20px; /* Відступи між картками */
+    margin-top: 20px;
+    padding: 10px;
+    justify-items: center;
+}
+
+.anime-card {
+    width: 200px;
+    background: #030303;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.anime-card img {
+    width: 100%;
+    height: auto;
+}
+
+.anime-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: white;
+}
+
+.anime-card:hover {
+    transform: scale(1.05);
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .rate-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-evenly;
+    height: 100%;
+
+  }
+
+  .grid-main{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .anime-details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+

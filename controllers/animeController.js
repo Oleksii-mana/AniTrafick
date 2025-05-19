@@ -1,0 +1,28 @@
+const Anime = require('../models/Anime');
+const fs = require('fs');
+
+exports.createAnime = async (req, res) => {
+    try {
+       /*  const { title } = req.body; */
+        const title = req.body.title;
+        const imageBuffer = req.file.buffer;
+        const imageType = req.file.mimetype; 
+
+        const newAnime = await Anime.create({ title, image: imageBuffer, imageType });
+        res.json({ id: newAnime.id, title: newAnime.title });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Помилка при додаванні аніме' });
+    }
+};
+
+exports.getAllAnimes = async (req, res) => {
+    const animes = await Anime.findAll();
+    const processed = animes.map(a => ({
+        id: a.id,
+        title: a.title,
+       /*  image: `data:${a.imageType};base64,${a.image.toString('base64')}` */
+        image: `data:${a.imageType};base64,${Buffer.from(a.image).toString('base64')}`
+    }));
+    res.json(processed);
+};

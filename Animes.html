@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Анітрафік: усі аніме</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header class="header">
+    <h1>Перелік усіх аніме, що розміщені на цьому сайті</h1>
+</header>
+<nav class="nav">
+    <a href="/">Головна</a>
+    <a href="/animes">Усі аніме</a>
+    <a href="/favourite">Мої улюблені</a>
+    <a href="/about">Про сайт</a>
+    <a href="/faq">FAQ</a>
+    <a href="/accaunt">Акаунт</a>
+</nav>
+
+
+<div class="flex">
+    <aside>
+        <p>Місце для реклами</p>
+    </aside>
+    <main>
+        <button id="addAnimeBtn">Додати аніме</button>
+
+        <div id="addAnimeForm" style="display: none;">
+            <input type="text" id="animeTitle" placeholder="Назва аніме">
+            <input type="file" id="animeImage">
+            <button id="submitAnime">Додати</button>
+        </div>
+
+        <div class="anime-list" id="animeList">
+   
+        </div>
+
+    </main>
+</div>
+
+<script src="animeScript.js"></script>
+
+
+</body>
+</html>
