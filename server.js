@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const animeRoutes = require('./routes/animeRoutes');
 const sequelize = require('./dataBase');
+const userRoutes = require('./routes/userRoutes');
 const multer = require('multer');
 const upload = multer(); 
 const cors = require('cors');
@@ -21,16 +22,13 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/animes', animeRoutes);
-
-/* app.use(express.static(__dirname)); */
-
+app.use('/api/users', userRoutes);
 
 app.post('/api/animes', upload.single('image'), animeController.createAnime);
 
 app.get('/', (req, res) => {
    res.sendFile(path.join(__dirname, 'Main.html')); 
 });
-
 
 app.get('/animes', (req, res) => {
     res.sendFile(path.join(__dirname, 'Animes.html'));
@@ -50,6 +48,14 @@ app.get('/faq', (req, res) => {
 
 app.get('/accaunt', (req, res) => {
     res.sendFile(path.join(__dirname, 'Accaunt.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'register.html'));
 });
 
 app.get('/anime/:id', (req, res) => {

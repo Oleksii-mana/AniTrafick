@@ -13,4 +13,31 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         })
         .catch(err => console.error("Помилка завантаження аніме:", err));
+
+
+    const deleteButton = document.getElementById("deleteAnimeButton");
+    if (deleteButton) {
+        deleteButton.addEventListener("click", () => {
+            if (confirm("Ви дійсно хочете видалити це аніме?")) {
+                fetch(`/api/animes/${id}`, {
+                    method: "DELETE",
+                })
+                .then(res => {
+                    if (res.ok) {
+                        alert("Аніме успішно видалено!");
+                        window.location.href = "/animes";
+                    } else {
+                        alert("Помилка при видаленні.");
+                    }
+                })
+                .catch(err => {
+                    console.error("Помилка при видаленні аніме:", err);
+                    alert("Виникла помилка.");
+                });
+            }
+        });
+    }
+
+
+
 });

@@ -21,4 +21,19 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const anime = await Anime.findByPk(req.params.id);
+        if (!anime) {
+            return res.status(404).json({ message: 'Аніме не знайдено' });
+        }
+
+        await anime.destroy();
+        res.json({ message: 'Аніме успішно видалено' });
+    } catch (err) {
+        console.error('Помилка видалення аніме:', err);
+        res.status(500).json({ message: 'Помилка сервера' });
+    }
+});
+
 module.exports = router;
