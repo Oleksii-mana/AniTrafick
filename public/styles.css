@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #F1EFEC;
     text-align: center;
+    overflow-x: hidden;
 }
 .h11 {
     color: purple;
@@ -228,6 +229,94 @@ button:hover {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
+}
+
+.parallax1 {
+    background-image: url("/images/Panorama.jpg");
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.parallax2 {
+    background-image: url("/images/Panorama2.jpg");
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}.parallax3 {
+    background-image: url("/images/Panorama3.jpg");
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}.parallax4 {
+    background-image: url("/images/Panorama4.webp");
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-about{
+    font-size: 60px;
+    font-family: Arial, sans-serif;
+    padding: 0px;
+    margin: 50px;
+}
+
+.scroll-section {
+    height: 150vh;
+    position: relative;
+}
+
+.sticky-wrapper {
+    position: sticky;
+    top: 25vh;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #F1EFEC;
+}
+
+.image-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.scroll-image {
+    height: 400px;
+    width: 300px;
+    object-fit: cover;
+    flex-shrink: 0;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.footer-about-nameplace{
+    margin-left: 10%;
+    font-size: 20px;
+    text-align: left;
+}
+
+.footer-about-info{
+    margin-right: 10%;
+    font-size: 20px;
+    text-align: right;
+}
+
+.flex-about{
+    display: flex;
+    justify-content: space-between;
 }
 
 

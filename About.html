@@ -19,13 +19,85 @@
     <a href="/accaunt">Акаунт</a>
 </nav>
 
-<p>Тизер нашого сайту</p>
+
+<p class="text-about">Вітаємо на сайті "Анітрафік".</p>
+<p class="text-about">Це сайт, створений для того, щоби ви могли швидко та легко знаходити потрібне вам аніме на найзручнішому для вас сайті з найкращою для вас озвучкою.</p>
+
+<div class="parallax1"></div>
+
+<p class="text-about">Ми пропонуємо вам дивитися свої улюблені тайтли на таких сайтах як:</p>
+
+<section class="scroll-section">
+  <div class="sticky-wrapper">
+    <div class="image-wrapper">
+      <img src="/images/Anitube.png" class="scroll-image" />
+      <img src="/images/eneyida.png" class="scroll-image" />
+      <img src="/images/uaserials.png" class="scroll-image" />
+    </div>
+  </div>
+</section>
+
+<p class="text-about">Хочете дізнатися більше?</p>
+<p class="text-about">Наш тизер вам покаже усі наші переваги</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=rAWGYFoMhFZw_eC9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<p>Письмово про сайт:</p>
-<p class="text">Вітаємо на сайті "Анітрафік". Це сайт, створений для того, щоби ви могли швидко та легко знаходити потрібне вам аніме на найзручнішому для вас сайті з найкращою для вас озвучкою.</p>
-<p class="text">Наш сайт пропонує вам перелік посилань на сайти, де бажане вами аніме знаходить, надає детальку інформацю про той чи інший аніме-сайт та вказує його плюси та мінуси. Також відображається інформація про те, яка там є в наявності озвучка. Ви також можете подивитися інформацію про ту чи іншу озвучку.</p>
+<p class="text-about">Зануртеся у світ аніме з головою</p>
+
+<div class="parallax2"></div>
+<div class="parallax3"></div>
+<div class="parallax4"></div>
+
+<footer class="footer">
+    <div class="flex-about">
+      <div class="footer-about-nameplace">
+        <p>Телефон:</p>
+        <p>e-mail:</p>
+      </div>
+      <div class="footer-about-info">
+        <p>+380984586395</p>
+        <p>aniTraf1k@gmail.com</p>
+      </div>
+    </div>
+    <p>Приємного перебування на сайті!</p>
+</footer>
+
+<script>
+  const images = document.querySelectorAll('.scroll-image');
+  const section = document.querySelector('.scroll-section');
+
+  window.addEventListener('scroll', () => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    const progress = Math.min(Math.max((scrollY - sectionTop) / (sectionHeight - windowHeight), 0), 1);
+
+    const imageCount = images.length;
+
+    images.forEach((img, index) => {
+      const start = index / imageCount;
+      const end = (index + 1) / imageCount;
+
+      if (progress >= start && progress <= end) {
+        img.style.transform = 'translateY(0)';
+        img.style.opacity = '1';
+      } else if (progress < start) {
+        img.style.transform = 'translateY(100%)';
+        img.style.opacity = '0';
+      } else {
+        img.style.transform = 'translateY(-100%)';
+        img.style.opacity = '0';
+      }
+    });
+  });
+</script>
+
+
+
+
+
 
 </body>
 </html>
