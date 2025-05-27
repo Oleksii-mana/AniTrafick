@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 
-const SECRET = 'your_jwt_secret_key'; // винести в .env у майбутньому
+const SECRET = 'your_jwt_secret_key'; 
 
 /* exports.register = async (req, res) => {
     const { username, email, password } = req.body;

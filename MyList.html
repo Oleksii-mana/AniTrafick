@@ -19,39 +19,54 @@
     <a href="/accaunt">Акаунт</a>
 </nav>
 
-<table class="table" border="1">
-    <tr>
-        <td>
-            <img src="images/rezero.jpg" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
-            <p>Улюблене аніме 1</p>
-        </td>
-        <td>
-            <img src="images/WelcomeImg.png" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
-            <p>Улюблене аніме 2</p>
-        </td>
-        <td>
-            <img src="images/WelcomeImg.png" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
-            <p>Улюблене аніме 3</p>
-        </td>
-        <td>
-            <img src="images/rezero.jpg" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
-            <p>Улюблене аніме 4</p>
-        </td>
-    </tr>
-    <tr>
+<div class="anime-list" id="animeList"></div>
 
-        <td>
-            <img src="images/WelcomeImg.png" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
-            <p>Улюблене аніме 5</p>
-        </td>
-        <td>
-            <img src="images/WelcomeImg.png" alt="Вітання на сайті" title="Вітальне зображення" width="100" height="100" />
-            <p>Улюблене аніме 6</p>
-        </td>
-    </tr>
-</table>
+<script>
+    const token = localStorage.getItem('token');
+    const animeList = document.getElementById('animeList');
 
-<script src="script.js"></script>
+    if (!token) {
+        animeList.innerHTML = "<p>Для взаємодії з цією сторінкою ви маєте бути зареєстрованими</p>";
+    } else {
+        fetch('/api/favourites', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(res => res.json())
+        .then(animes => {
+            if (animes.length === 0) {
+                animeList.innerHTML = "<p>Список улюблених аніме порожній</p>";
+            } else {
+                animes.forEach(anime => {
+                    const imgSrc = `data:${anime.imageType};base64,${arrayBufferToBase64(anime.image.data)}`;
+                    const animeCard = document.createElement("div");
+                    animeCard.classList.add("anime-card");
+                    animeCard.innerHTML = `
+                        <img src="${imgSrc}" alt="${anime.title}">
+                        <h3>${anime.title}</h3>
+                    `;
 
+                    animeCard.addEventListener("click", () => {
+                        window.location.href = `/anime/${anime.id}`;
+                    });
+
+                    animeList.appendChild(animeCard);
+                });
+            }
+        })
+        .catch(err => {
+            console.error("Помилка при завантаженні улюблених аніме:", err);
+            animeList.innerHTML = "<p>Не вдалося завантажити улюблені аніме.</p>";
+        });
+    }
+
+    function arrayBufferToBase64(buffer) {
+        const bytes = new Uint8Array(buffer);
+        let binary = '';
+        for (let b of bytes) {
+            binary += String.fromCharCode(b);
+        }
+        return btoa(binary);
+    }
+</script>
 </body>
 </html>

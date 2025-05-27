@@ -2,7 +2,9 @@ const path = require('path');
 const express = require('express');
 const animeRoutes = require('./routes/animeRoutes');
 const sequelize = require('./dataBase');
+require('./models/associations');
 const userRoutes = require('./routes/userRoutes');
+const favouriteRoutes = require('./routes/favouriteRoutes');
 const multer = require('multer');
 const upload = multer(); 
 const cors = require('cors');
@@ -23,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/animes', animeRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/favourites', favouriteRoutes)
 
 app.post('/api/animes', upload.single('image'), animeController.createAnime);
 
