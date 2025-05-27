@@ -2,7 +2,7 @@ const Favourite = require('../models/Favourite');
 const Anime = require('../models/Anime');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const SECRET = process.env.JWT_SECRET;
+//const SECRET = process.env.JWT_SECRET;
 
 
 exports.addToFavourites = async (req, res) => {

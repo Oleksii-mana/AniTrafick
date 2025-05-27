@@ -15,30 +15,48 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => console.error("Помилка завантаження аніме:", err));
 
     const deleteButton = document.getElementById("deleteAnimeButton");
-    if (deleteButton) {
-        deleteButton.addEventListener("click", () => {
-            if (confirm("Ви дійсно хочете видалити це аніме?")) {
-                fetch(`/api/animes/${id}`, {
-                    method: "DELETE",
-                })
-                .then(res => {
-                    if (res.ok) {
-                        alert("Аніме успішно видалено!");
-                        window.location.href = "/animes";
-                    } else {
-                        alert("Помилка при видаленні.");
+    const token = localStorage.getItem('token');
+
+    if (token) {
+        fetch('/api/users/me', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(res => {
+            if (!res.ok) throw new Error('Не авторизований');
+            return res.json();
+        })
+        .then(user => {
+            if (user.isAdmin) {
+                deleteButton.style.display = 'inline-block';
+
+                deleteButton.addEventListener("click", () => {
+                    if (confirm("Ви дійсно хочете видалити це аніме?")) {
+                        fetch(`/api/animes/${id}`, {
+                            method: "DELETE",
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        })
+                        .then(res => {
+                            if (res.ok) {
+                                alert("Аніме успішно видалено!");
+                                window.location.href = "/animes";
+                            } else {
+                                alert("Помилка при видаленні.");
+                            }
+                        })
+                        .catch(err => {
+                            console.error("Помилка при видаленні аніме:", err);
+                            alert("Виникла помилка.");
+                        });
                     }
-                })
-                .catch(err => {
-                    console.error("Помилка при видаленні аніме:", err);
-                    alert("Виникла помилка.");
                 });
             }
+        })
+        .catch(() => {
+            deleteButton.style.display = 'none';
         });
-    }
 
-    const token = localStorage.getItem('token');
-    if (token) {
         const favBtn = document.createElement("button");
         favBtn.style.margin = "20px";
         document.body.appendChild(favBtn);
@@ -48,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(res => res.json())
         .then(favourites => {
-            //console.log("Сервер повернув:", favourites);
             const isFavourite = favourites.some(fav => fav.id == id);
             renderFavButton(isFavourite);
         })
@@ -99,5 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
             }
         }
+    } else {
+        deleteButton.style.display = 'none';
     }
 });
