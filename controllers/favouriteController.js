@@ -1,8 +1,8 @@
 const Favourite = require('../models/Favourite');
 const Anime = require('../models/Anime');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-//const SECRET = process.env.JWT_SECRET;
 
 
 exports.addToFavourites = async (req, res) => {
@@ -23,14 +23,14 @@ exports.getFavouritesForUser = async (req, res) => {
     try {
         const userId = req.user.id;
 
-        const animes = await Anime.findAll({
+        const user = await User.findByPk(userId, {
             include: {
-                model: require('../models/User'),
-                where: { id: userId }
+                model: Anime,
+                as: 'Favourites' 
             }
         });
 
-        res.json(animes);
+        res.json(user.Favourites);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Не вдалося отримати улюблені' });

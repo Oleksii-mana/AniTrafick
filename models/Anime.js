@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../dataBase');
 
 
+
 const Anime = sequelize.define('Anime', {
     title: {
         type: DataTypes.STRING,

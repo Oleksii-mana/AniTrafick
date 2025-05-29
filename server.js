@@ -5,6 +5,7 @@ const sequelize = require('./dataBase');
 require('./models/associations');
 const userRoutes = require('./routes/userRoutes');
 const favouriteRoutes = require('./routes/favouriteRoutes');
+const ratingRoutes = require('./routes/ratingRoutes');
 const multer = require('multer');
 const upload = multer(); 
 const cors = require('cors');
@@ -15,17 +16,14 @@ const PORT = 5000;
 
 app.use(cors());
 
-/* app.use(express.json()); */
 app.use(express.json({ limit: '10mb' }));
-
-
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/animes', animeRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/favourites', favouriteRoutes)
+app.use('/api/favourites', favouriteRoutes);
+app.use('/api/ratings', ratingRoutes);
 
 app.post('/api/animes', upload.single('image'), animeController.createAnime);
 

@@ -329,4 +329,30 @@ button:hover {
     cursor: pointer;
 }
 
+.star-rating {
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.star-rating span {
+    transition: color 0.2s;
+}
+
+.star {
+    color: lightgray;
+}
+
+.star.admin-selected {
+    color: red;
+}
+
+.star.user-average {
+    color: gold;
+}
+
+.star.user-selected {
+    color: violet;
+}
 

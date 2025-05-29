@@ -1,5 +1,6 @@
 const Anime = require('../models/Anime');
 const fs = require('fs');
+const Rating = require('../models/Rating')
 
 exports.createAnime = async (req, res) => {
     try {
@@ -49,6 +50,7 @@ exports.deleteAnime = async (req, res) => {
             return res.status(404).json({ message: 'Аніме не знайдено' });
         }
 
+        await Rating.destroy({ where: { AnimeId: anime.id } });
         await anime.destroy();
         res.json({ message: 'Аніме успішно видалено' });
     } catch (err) {
