@@ -11,7 +11,8 @@ exports.addToFavourites = async (req, res) => {
 
         const animeId = req.params.animeId;
 
-        await Favourite.create({ userId, animeId });
+        await Favourite.create({ userId: userId,
+            animeId: animeId });
         res.json({ message: 'Додано до улюблених' });
     } catch (err) {
         console.error(err);
@@ -43,7 +44,8 @@ exports.removeFavourite = async (req, res) => {
 
     try {
         await Favourite.destroy({
-            where: { userId, animeId }
+            where: { userId: userId,
+            animeId: animeId }
         });
         res.sendStatus(200);
     } catch (err) {

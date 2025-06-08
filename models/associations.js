@@ -4,8 +4,8 @@ const Favourite = require('./Favourite');
 const Rating = require('./Rating');
 
 
-User.belongsToMany(Anime, { through: Favourite, as: 'Favourites' });
-Anime.belongsToMany(User, { through: Favourite, as: 'FavouritedBy' });
+User.belongsToMany(Anime, { through: Favourite, as: 'Favourites', foreignKey: 'userId', otherKey: 'animeId' });
+Anime.belongsToMany(User, { through: Favourite, as: 'FavouritedBy', foreignKey: 'animeId', otherKey: 'userId' });
 
 
 User.hasMany(Rating);

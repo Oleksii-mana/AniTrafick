@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /accaunt/
+Disallow: /about/
+Disallow: /faq/
+Disallow: /favorite/
+Allow: /
+Sitemap: http://localhost:5000/sitemap.xml
